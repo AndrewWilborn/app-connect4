@@ -47,9 +47,11 @@ export default function Game({username}){
         <AppLayout>
             <Container component='main' maxWidth='sm'>
                 <Typography type='h1' variant='h2' align='center'>{
+                    (gameState.inGame) ?
                     (gameState.activePlayer === whichPlayer)
                         ? "Your Move, " + username
                         : "Waiting for Opponent..."
+                    : "Waiting for players..."
                 }</Typography>
                 <GameGrid gameState={gameState} playerId={playerId} whichPlayer={whichPlayer}xw getGameState={getGameState}/>
                 {true && <Button onClick={() => {nav('/')}} fullWidth variant="contained" sx={{mt:2, mb:2}}>Return to Main Menu</Button>}
