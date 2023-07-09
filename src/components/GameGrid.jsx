@@ -12,8 +12,9 @@ export default function GameGrid({gameState, playerId, whichPlayer, getGameState
                 },
                 body: JSON.stringify({moveCol: columnNum, playerId: playerId}),
             })
+            .then(getGameState())
+            .catch(alert);
         }
-        getGameState()
     }
 
     const getImgSource = (rowNum, columnNum) => {

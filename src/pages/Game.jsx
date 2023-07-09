@@ -36,7 +36,7 @@ export default function Game({username}){
     // update board periodically if gameState.activePlayer === whichPlayer
     useEffect(() => {
         const x = setInterval(() => {
-            getGameState();
+            (gameState.activePlayer !== whichPlayer) && getGameState();
         }, 500);
         return () => {
             clearInterval(x);
@@ -46,8 +46,11 @@ export default function Game({username}){
     return (
         <AppLayout>
             <Container component='main' maxWidth='sm'>
-                <Typography type='h5' variant='h5'>playerId={playerId}, activePlayer={gameState.activePlayer}, whichPlayer={whichPlayer}</Typography>
-                <Typography type='h1' variant='h2' align='center'>Active Player: {username}</Typography>
+                <Typography type='h1' variant='h2' align='center'>{
+                    (gameState.activePlayer === whichPlayer)
+                        ? "Your Move, " + username
+                        : "Waiting for Opponent..."
+                }</Typography>
                 <GameGrid gameState={gameState} playerId={playerId} whichPlayer={whichPlayer}xw getGameState={getGameState}/>
                 {true && <Button onClick={() => {nav('/')}} fullWidth variant="contained" sx={{mt:2, mb:2}}>Return to Main Menu</Button>}
             </Container>
