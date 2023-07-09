@@ -1,13 +1,26 @@
 import { Grid } from "@mui/material";
 
-export default function GameGrid({board}) {
+export default function GameGrid({gameState, playerId, whichPlayer, getGameState}) {
 
+    const postMove = (columnNum) => {
+        if(gameState.activePlayer === whichPlayer){
+            console.log("posting")
+            fetch("https://tic-tac-toe-ajw-api.web.app/move", {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({moveCol: columnNum, playerId: playerId}),
+            })
+        }
+        getGameState()
+    }
 
     const getImgSource = (rowNum, columnNum) => {
-        if(board[columnNum][5-rowNum] === 'Y'){
+        if(gameState.board[columnNum][5-rowNum] === 'Y'){
             return 'images/yellow.png'
         }
-        if(board[columnNum][5-rowNum] === 'R'){
+        if(gameState.board[columnNum][5-rowNum] === 'R'){
             return 'images/red.png'
         }
         return 'images/blank.png'
@@ -21,7 +34,7 @@ export default function GameGrid({board}) {
                     <img 
                         src={getImgSource(rowNum, columnNum)}
                         style={{width:'14%'}}
-                        onClick={() => console.log(columnNum)}
+                        onClick={() => postMove(columnNum)}
                     />
                 )}
             </Grid>
