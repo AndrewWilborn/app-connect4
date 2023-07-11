@@ -52,7 +52,7 @@ export default function Game({username}){
     // update board periodically if gameState.activePlayer === whichPlayer
     useEffect(() => {
         const x = setInterval(() => {
-            (gameState.activePlayer !== whichPlayer) && getGameState();
+            getGameState();
         }, 500);
         return () => {
             clearInterval(x);
