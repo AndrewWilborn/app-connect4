@@ -12,6 +12,22 @@ export default function Game({username}){
     const [playerId, setPlayerId] = useState();
     const [whichPlayer, setWhichPlayer] = useState();
 
+    const messages = [
+        [ // Player 1 Messages
+            `Your Move ${username}`, 
+            "Waiting for opponent...", 
+            "You Win!",
+            "You Lose."
+        ],
+        [ // Player2 Messages
+            "Waiting for opponent...",
+            `Your Move ${username}`,
+            "You Lose.",
+            "You Win!"
+        ],
+        // Spectator messages can go here
+    ]
+
     const getGameState = () => { 
         fetch("https://tic-tac-toe-ajw-api.web.app/gameState")
             .then(response => response.json())
@@ -47,11 +63,9 @@ export default function Game({username}){
         <AppLayout>
             <Container component='main' maxWidth='sm'>
                 <Typography type='h1' variant='h2' align='center'>{
-                    (gameState.inGame) ?
-                    (gameState.activePlayer === whichPlayer)
-                        ? "Your Move, " + username
-                        : "Waiting for Opponent..."
-                    : "Waiting for players..."
+                    (!gameState.inGame)
+                    ? "Waiting for players..."
+                    : messages[whichPlayer][gameState.activePlayer]
                 }</Typography>
                 <GameGrid gameState={gameState} playerId={playerId} whichPlayer={whichPlayer} getGameState={getGameState}/>
                 {true && <Button onClick={() => {nav('/')}} fullWidth variant="contained" sx={{mt:2, mb:2}}>Return to Main Menu</Button>}
