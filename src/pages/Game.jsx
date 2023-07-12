@@ -12,23 +12,34 @@ export default function Game({username}){
     const [playerId, setPlayerId] = useState();
     const [whichPlayer, setWhichPlayer] = useState();
 
+    /*
+        ActivePlayer meanings:
+        0: player 0's turn
+        1: player 1's turn
+        2: player 0 wins
+        3: player 1 wins
+        4: a player disconnected
+    */
+
     const messages = [
         [ // Player 1 Messages
             `Your Move ${username}`, 
             "Waiting for opponent...", 
             "You Win!",
-            "You Lose."
+            "You Lose.",
+            "Opponent Disconnected"
         ],
         [ // Player2 Messages
             "Waiting for opponent...",
             `Your Move ${username}`,
             "You Lose.",
-            "You Win!"
+            "You Win!",
+            "Opponent Disconnected"
         ],
         // Spectator messages can go here
     ]
 
-    const getGameState = () => { 
+    const getGameState = () => {
         fetch(`https://tic-tac-toe-ajw-api.web.app/gameState/${whichPlayer}`)
             .then(response => response.json())
             .then(data => setGameState(data))
@@ -57,7 +68,7 @@ export default function Game({username}){
         return () => {
             clearInterval(x);
         }
-    }, []);
+    }, [whichPlayer]);
 
     return (
         <AppLayout>
