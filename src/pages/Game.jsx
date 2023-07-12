@@ -29,7 +29,7 @@ export default function Game({username}){
     ]
 
     const getGameState = () => { 
-        fetch("https://tic-tac-toe-ajw-api.web.app/gameState")
+        fetch(`https://tic-tac-toe-ajw-api.web.app/gameState/${whichPlayer}`)
             .then(response => response.json())
             .then(data => setGameState(data))
             .catch(alert)
