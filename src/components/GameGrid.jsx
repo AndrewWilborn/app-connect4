@@ -33,7 +33,7 @@ export default function GameGrid({gameState, playerId, whichPlayer, getGameState
                 {[...Array(7)].map((e,columnNum) => 
                     <img 
                         src={getImgSource(rowNum, columnNum)}
-                        style={{width:'14.285714285%'}}
+                        style={{width:'14.285714285%'}} // number is 1/7
                         onClick={() => postMove(columnNum)}
                     />
                 )}
