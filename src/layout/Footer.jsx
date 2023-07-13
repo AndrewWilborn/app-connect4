@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { useTheme } from '@mui/material/styles';
+import { blueGrey } from '@mui/material/colors';
 
 
 export default function Footer(){
@@ -25,10 +26,7 @@ export default function Footer(){
                 py: 2,
                 px: 2,
                 mt: 'auto',
-                backgroundColor: (theme) =>
-                  theme.palette.mode === 'light'
-                    ? theme.palette.grey[200]
-                    : theme.palette.grey[800],
+                backgroundColor: "#e4e4e7"
               }}
             >
               <Container maxWidth="sm">
