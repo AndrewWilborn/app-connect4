@@ -4,7 +4,6 @@ export default function GameGrid({gameState, playerId, whichPlayer, getGameState
 
     const postMove = (columnNum) => {
         if(gameState.activePlayer === whichPlayer){
-            console.log("posting")
             fetch("https://tic-tac-toe-ajw-api.web.app/move", {
                 method: 'PATCH',
                 headers: {
