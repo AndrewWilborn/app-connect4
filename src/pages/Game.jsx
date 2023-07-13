@@ -42,6 +42,13 @@ export default function Game({username}){
         // Spectator messages can go here
     ]
 
+    const getDisplayColor = () => {
+        if(whichPlayer === gameState.activePlayer && gameState.inGame){
+            return "#34d399"
+        }
+        return "";
+    }
+
     const getGameState = () => {
         fetch(`https://tic-tac-toe-ajw-api.web.app/gameState/${whichPlayer}`)
             .then(response => response.json())
@@ -77,10 +84,10 @@ export default function Game({username}){
         <AppLayout>
             <Container component='main' maxWidth='sm'>
                 <Box textAlign="center">
-                    <Box textAlign="center" sx={{ border: '3px solid blue', mb:1, backgroundColor:""}}>
+                    <Box textAlign="center" sx={{ border: "3px solid #3f48cc", mb:1, backgroundColor:getDisplayColor()}}>
                         <Typography type='h1' variant='h3' align='center'>{
                             (!gameState.inGame)
-                            ? "Waiting for players"
+                            ? "Waiting for players..."
                             : messages[whichPlayer][gameState.activePlayer]
                         }</Typography>
                     </Box>
