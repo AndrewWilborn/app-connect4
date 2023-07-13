@@ -39,10 +39,20 @@ export default function Game({username}){
             "You Win!",
             "Opponent Left"
         ],
-        // Spectator messages can go here
+        [ // Spectator Messages
+            "Spectating",
+            "Spectating",
+            "Red 1 Wins!",
+            "Yellow 2 Wins!",
+            "Player Disconnected"
+        ]
     ]
 
     const getDisplayColor = () => {
+        if(gameState.activePlayer === whichPlayer+2){
+            return "#4ade80"
+        }
+
         if(whichPlayer === gameState.activePlayer && gameState.inGame){
             return "#34d399"
         }
