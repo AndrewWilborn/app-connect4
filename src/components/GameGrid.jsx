@@ -29,11 +29,11 @@ export default function GameGrid({gameState, playerId, whichPlayer, getGameState
     return (
         <Grid container spacing={0} columns={7}>
             {[...Array(6)].map((e,rowNum) => 
-            <Grid item spacing={0}>
+            <Grid item spacing={0} style={{backgroundColor:"#3f48cc"}}>
                 {[...Array(7)].map((e,columnNum) => 
                     <img 
                         src={getImgSource(rowNum, columnNum)}
-                        style={{width:'14%'}}
+                        style={{width:'14.285714285%'}}
                         onClick={() => postMove(columnNum)}
                     />
                 )}
