@@ -43,7 +43,7 @@ export default function Footer(){
             >
               <Container maxWidth="sm">
                 <Typography variant="body1">
-                    <Link color='inherit' href="#">See the code in GitHub</Link>
+                    <Link color='inherit' href="https://github.com/AndrewWilborn/app-connect4">See the code in GitHub</Link>
                 </Typography>
                 <Copyright />
               </Container>

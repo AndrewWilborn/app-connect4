@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './styles/App.css';
 import Home from './pages/Home';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import Game from './pages/Game';
-import { orange } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 
 function App() {
   const [username, setUsername] = useState("Guest")
@@ -12,7 +11,7 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: orange[500]
+        main: blue[300]
       },
     }
   });
