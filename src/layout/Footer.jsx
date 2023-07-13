@@ -10,29 +10,19 @@ export default function Footer(){
 
   const theme = useTheme()
 
-    const Copyright = () => {
-        return (
-          <Typography variant="body2" color="text.secondary">
-            {'Copyright © '}
-            {new Date().getFullYear()}
-            {'.'}
-          </Typography>
-        );
-    }
-
     return (
           <Box
             sx={{
+              position: 'fixed', bottom: 0, left: 0, right: 0,
               display: 'flex',
               flexDirection: 'column',
-              minHeight: '50vh',
             }}
           >
 
             <Box
               component="footer"
               sx={{
-                py: 3,
+                py: 2,
                 px: 2,
                 mt: 'auto',
                 backgroundColor: (theme) =>
@@ -43,9 +33,8 @@ export default function Footer(){
             >
               <Container maxWidth="sm">
                 <Typography variant="body1">
-                    <Link color='inherit' href="https://github.com/AndrewWilborn/app-connect4">See the code in GitHub</Link>
+                    <Link color='inherit' href="https://github.com/AndrewWilborn/app-connect4" target="_blank">See the code in GitHub</Link>
                 </Typography>
-                <Copyright />
               </Container>
             </Box>
           </Box>
