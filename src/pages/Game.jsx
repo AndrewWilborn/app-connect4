@@ -79,7 +79,7 @@ export default function Game({username}){
                     : messages[whichPlayer][gameState.activePlayer]
                 }</Typography>
                 <GameGrid gameState={gameState} playerId={playerId} whichPlayer={whichPlayer} getGameState={getGameState}/>
-                {true && <Button onClick={() => {nav('/')}} fullWidth variant="contained" sx={{mt:2, mb:2}}>Return to Main Menu</Button>}
+                {((gameState.activePlayer!==1 && gameState.activePlayer!==0) || !gameState.inGame) && <Button onClick={() => {nav('/')}} fullWidth variant="contained" sx={{mt:2, mb:2}}>Return to Main Menu</Button>}
             </Container>
         </AppLayout>
     )
