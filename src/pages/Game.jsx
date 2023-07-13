@@ -4,6 +4,7 @@ import GameGrid from "../components/GameGrid";
 import AppLayout from "../layout/AppLayout";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { BorderAllRounded } from "@mui/icons-material";
 
 export default function Game({username}){
     const theme = useTheme()
@@ -26,17 +27,17 @@ export default function Game({username}){
     const messages = [
         [ // Player 1 Messages
             `Your Move\n${username}`, 
-            "Waiting for\nopponent...", 
+            "Waiting for\nopponent", 
             "You Win!",
-            "You Lose.",
-            "Opponent\nDisconnected"
+            "You Lose",
+            "Opponent Left"
         ],
         [ // Player2 Messages
-            "Waiting for\nopponent...",
+            "Waiting for\nopponent",
             `Your Move\n${username}`,
-            "You Lose.",
+            "You Lose",
             "You Win!",
-            "Opponent\nDisconnected"
+            "Opponent Left"
         ],
         // Spectator messages can go here
     ]
@@ -65,25 +66,25 @@ export default function Game({username}){
     // update board periodically if gameState.activePlayer === whichPlayer
     useEffect(() => {
         const x = setInterval(() => {
-            getGameState();
+            (gameState.activePlayer===0||gameState.activePlayer===1) && getGameState();
         }, 500);
         return () => {
             clearInterval(x);
         }
-    }, [whichPlayer]);
+    }, [whichPlayer, gameState.activePlayer]);
 
     return (
         <AppLayout>
             <Container component='main' maxWidth='sm'>
                 <Box textAlign="center">
-                    <Box textAlign="center" sx={{ border: '3px solid blue'}}>
-                        <Typography type='h1' variant='h2' align='center'>{
+                    <Box textAlign="center" sx={{ border: '3px solid blue', mb:1, backgroundColor:""}}>
+                        <Typography type='h1' variant='h3' align='center'>{
                             (!gameState.inGame)
-                            ? "Waiting for\nplayers..."
+                            ? "Waiting for players"
                             : messages[whichPlayer][gameState.activePlayer]
                         }</Typography>
-                        <GameGrid gameState={gameState} playerId={playerId} whichPlayer={whichPlayer} getGameState={getGameState}/>
                     </Box>
+                    <GameGrid gameState={gameState} playerId={playerId} whichPlayer={whichPlayer} getGameState={getGameState}/>
                     {((gameState.activePlayer!==1 && gameState.activePlayer!==0) || !gameState.inGame) && <Button onClick={() => {nav('/')}} variant="contained" sx={{mt:2, mb:2}}>Return to Main Menu</Button>}
                 </Box>
             </Container>
