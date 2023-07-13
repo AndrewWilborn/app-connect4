@@ -1,10 +1,12 @@
 import { Button, Container, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles"
 import GameGrid from "../components/GameGrid";
 import AppLayout from "../layout/AppLayout";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Game({username}){
+    const theme = useTheme()
     const nav = useNavigate()
 
     // gameState {inGame: bool, activePlayer: 0/1, board: []}

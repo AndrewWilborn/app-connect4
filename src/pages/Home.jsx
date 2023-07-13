@@ -1,9 +1,11 @@
 import { Box, Container, Typography, TextField, Button } from "@mui/material";
 import AppLayout from "../layout/AppLayout";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 
 export default function Home({setUsername}) {
 
+    const theme = useTheme();
     const nav = useNavigate()
 
     const handleSubmit = (e) => {
