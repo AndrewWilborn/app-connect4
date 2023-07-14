@@ -42,8 +42,8 @@ export default function Game({username}){
         [ // Spectator Messages
             "Spectating",
             "Spectating",
-            "Red 1 Wins!",
-            "Yellow 2 Wins!",
+            "Red Wins!",
+            "Yellow Wins!",
             "Player Disconnected"
         ]
     ]
