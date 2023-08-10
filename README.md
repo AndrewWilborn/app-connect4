@@ -4,7 +4,7 @@
 
 Created a full stack multiplayer Connect 4 game which allows two players on different devices to play a game of Connect 4 in real time.
 
- The frontend was built using React and the Material UI component library. The website is hosted on Google Cloud via Storage Bucket and SSL. The backend is deployed using a Google Cloud Function.
+The frontend was built using React and the Material UI component library. The website is hosted on Google Cloud via Storage Bucket and SSL. The backend is deployed using a Google Cloud Function.
 
 ## Website
 [Click here to view the site!](https://connect-4-ajw.web.app)
